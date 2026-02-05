@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 import 'screens/camera_screen.dart';
 import 'screens/picture_screen.dart';
 import 'screens/music_screen.dart';
 
-void main() {
+late List<CameraDescription> cameras;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
   runApp(const MyApp());
 }
 
@@ -12,9 +17,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
@@ -54,11 +59,20 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: currentIndex,
         onTap: (i) => setState(() => currentIndex = i),
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.camera_alt), label: 'Càmera'),
-          BottomNavigationBarItem(icon: Icon(Icons.image), label: 'Picture'),
-          BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.camera_alt),
+            label: 'Càmera',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.image),
+            label: 'Picture',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.music_note),
+            label: 'Music',
+          ),
         ],
       ),
     );
   }
-} 
+}

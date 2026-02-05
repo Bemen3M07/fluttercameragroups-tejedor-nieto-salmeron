@@ -8,8 +8,11 @@ class PictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (imagePath == null) {
-      return const Center(child: Text('Picture Screen'));
+      return const Center(child: Text('No picture taken'));
     }
-    return Center(child: Image.file(File(imagePath!)));
+
+    return Center(
+      child: Image.file(File(imagePath!)),
+    );
   }
 }

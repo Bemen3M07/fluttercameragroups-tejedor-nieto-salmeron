@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Permisos camara -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    
     <application
-        android:label="empty"
+        android:label="camara_flutter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
